@@ -68,6 +68,7 @@ export default function SpanDetail(props: SpanDetailProps) {
     tags,
     warnings,
     references,
+    subsidiarilyReferencedBy,
   } = span;
   const overviewItems = [
     {
@@ -140,11 +141,13 @@ export default function SpanDetail(props: SpanDetailProps) {
             onToggle={() => warningsToggle(spanID)}
           />
         )}
-        {references &&
+        {(references &&
           references.length > 0 &&
-          (references.length > 1 || references[0].refType !== 'CHILD_OF') && (
+          (references.length > 1 || references[0].refType !== 'CHILD_OF') || 
+          (subsidiarilyReferencedBy &&
+            subsidiarilyReferencedBy.length > 0)) && (
             <AccordianReferences
-              data={references}
+              data={((references || []).concat(subsidiarilyReferencedBy || []))}
               isOpen={isReferencesOpen}
               onToggle={() => referencesToggle(spanID)}
               focusSpan={focusSpan}

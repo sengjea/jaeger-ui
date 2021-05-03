@@ -15,8 +15,7 @@
 import * as React from 'react';
 import IoAlert from 'react-icons/lib/io/alert';
 import IoArrowRightA from 'react-icons/lib/io/arrow-right-a';
-import IoNetwork from 'react-icons/lib/io/network';
-import MdFileUpload from 'react-icons/lib/md/file-upload';
+import { MdCallMerge, MdCallSplit } from 'react-icons/lib/md';
 import ReferencesButton from './ReferencesButton';
 import TimelineRow from './TimelineRow';
 import { formatDuration, ViewedBoundsFunctionType } from './utils';
@@ -177,7 +176,7 @@ export default class SpanBarRow extends React.PureComponent<SpanBarRowProps> {
                 tooltipText="Contains multiple references"
                 focusSpan={focusSpan}
               >
-                <IoNetwork />
+                <MdCallMerge />
               </ReferencesButton>
             )}
             {span.subsidiarilyReferencedBy && span.subsidiarilyReferencedBy.length > 0 && (
@@ -188,7 +187,7 @@ export default class SpanBarRow extends React.PureComponent<SpanBarRowProps> {
                 }`}
                 focusSpan={focusSpan}
               >
-                <MdFileUpload />
+                <MdCallSplit />
               </ReferencesButton>
             )}
           </div>
